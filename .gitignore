@@ -1,3 +1,10 @@
+# folder
+Bin/
+Lib/
+.vs/
+
+
+
 # Prerequisites
 *.d
 
