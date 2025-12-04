@@ -4,5 +4,42 @@
     <Filter Include="Core">
       <UniqueIdentifier>{6302835a-1154-433d-b9fb-fa9496713625}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{ff215050-5dd5-49d4-a9c5-2e5663b0b28d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Types.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Macros.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\ThreadManager.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CorePch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreTLS.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Thread\ThreadManager.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreTLS.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CorePch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
