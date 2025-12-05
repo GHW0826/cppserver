@@ -108,7 +108,7 @@
     </Lib>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
-
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
         copy /Y "%%F" "$(SolutionDir)Include\Core"
@@ -145,7 +145,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     </Lib>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
-
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
         copy /Y "%%F" "$(SolutionDir)Include\Core"
@@ -180,7 +180,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     </Lib>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
-
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
         copy /Y "%%F" "$(SolutionDir)Include\Core"
@@ -217,7 +217,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     </Lib>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
-
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
         copy /Y "%%F" "$(SolutionDir)Include\Core"
@@ -229,6 +229,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <Bscmake />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="CoreTLS.h" />
     <ClInclude Include="Core\Macros.h" />
@@ -237,6 +238,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="Thread\ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CoreGlobal.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="CoreTLS.cpp" />
     <ClCompile Include="pch.cpp">

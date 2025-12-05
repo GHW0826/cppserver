@@ -2,9 +2,15 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include "Macros.h"
 #include <cstdint>
 
 #if CPP_VERSION >= 11
+#include <mutex>
+#include <thread>
+#include <functional>
+#include <vector>
+
 using BYTE = std::uint8_t;
 using int8 = std::int8_t;
 using int16 = std::int16_t;
@@ -15,7 +21,20 @@ using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
 using uint64 = std::uint64_t;
 
+template<typename T>
+using Vector = std::vector<T>;
+template<typename T>
+using Func = std::function<T>;
+
 using Mutex = std::mutex;
+using Thread = std::thread;
+
+template<typename T>
+using Atomic = std::atomic<T>;
+template<typename T>
+using UniqueLock = std::unique_lock<T>;
+template<typename T>
+using LockGuard = std::lock_guard<T>;
 #else   // C++11 이전 계열
 	#if defined(_WIN32) || defined(_WIN64)
 		typedef unsigned char BYTE;

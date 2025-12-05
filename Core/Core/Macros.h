@@ -47,4 +47,20 @@
 	}										\
 }
 
+
+// Pointer Alloc
+#define RAW_POINTER_NEW(name, type)		\
+{										\
+	if (name == nullptr)				\
+		name = new type;				\
+}										\
+
+#define RAW_POINTER_DELETE(name)		\
+{										\
+	if (name != nullptr) {				\
+		delete name;					\
+		name = nullptr;					\
+	}									\
+}										\
+
 #endif // !MACROS_H

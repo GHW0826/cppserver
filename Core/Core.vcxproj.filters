@@ -7,6 +7,9 @@
     <Filter Include="Thread">
       <UniqueIdentifier>{ff215050-5dd5-49d4-a9c5-2e5663b0b28d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{a019541e-bec2-402b-8ba1-febd78de5e07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Types.h">
@@ -27,6 +30,9 @@
     <ClInclude Include="CoreTLS.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Thread\ThreadManager.cpp">
@@ -39,6 +45,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="CorePch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
