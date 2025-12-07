@@ -10,6 +10,15 @@
     <Filter Include="Memory">
       <UniqueIdentifier>{a019541e-bec2-402b-8ba1-febd78de5e07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Job">
+      <UniqueIdentifier>{94879191-6b14-43e9-b6de-f10190a4ed99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\SmartPointer">
+      <UniqueIdentifier>{1cec537a-151e-4828-96c8-10f4fdb3016e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{9dd9c69c-cfc8-42ab-9c0a-ad127a730d84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Types.h">
@@ -33,6 +42,27 @@
     <ClInclude Include="CoreGlobal.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Job\Job.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetCore.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCPCore.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCPObject.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetObject.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCPEvent.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Session.h">
+      <Filter>Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Thread\ThreadManager.cpp">
@@ -49,6 +79,18 @@
     </ClCompile>
     <ClCompile Include="CoreGlobal.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\Job.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCPCore.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCPObject.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Session.cpp">
+      <Filter>Network</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

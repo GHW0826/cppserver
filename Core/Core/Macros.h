@@ -63,4 +63,6 @@
 	}									\
 }										\
 
+#define USING_SHARED_PTR(name)	using name##Ref = SharedPtr<class name>;
+
 #endif // !MACROS_H

@@ -25,6 +25,8 @@ template<typename T>
 using Vector = std::vector<T>;
 template<typename T>
 using Func = std::function<T>;
+template<typename T>
+using Callback = std::function<T>;
 
 using Mutex = std::mutex;
 using Thread = std::thread;
@@ -35,6 +37,12 @@ template<typename T>
 using UniqueLock = std::unique_lock<T>;
 template<typename T>
 using LockGuard = std::lock_guard<T>;
+
+template<typename T>
+using SharedPtr = std::shared_ptr<T>;
+
+USING_SHARED_PTR(IOCPObject);
+
 #else   // C++11 이전 계열
 	#if defined(_WIN32) || defined(_WIN64)
 		typedef unsigned char BYTE;
