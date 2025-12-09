@@ -10,8 +10,12 @@
 
 #include "Types.h"
 #include "Macros.h"
+#include "Container.h"
 #include "CoreGlobal.h"
 #include "CoreTLS.h"
+#include "CustomLock.h"
+#include "CustomReadLockGuard.h"
+#include "CustomWriteLockGuard.h"
 
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>

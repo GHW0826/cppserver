@@ -2,7 +2,6 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-
 #define OUT
 
 // C++ Version
@@ -64,5 +63,20 @@
 }										\
 
 #define USING_SHARED_PTR(name)	using name##Ref = SharedPtr<class name>;
+
+
+#define USE_MANY_LOCK(count)	CustomLock _locks[count];
+#define USE_LOCK				USE_MANY_LOCK(1);
+#define READ_LOCK_IDX(idx)		CustomReadLockGuard readLockGuard_##idx(_locks[idx], typeid(this).name());
+#define READ_LOCK				READ_LOCK_IDX(0);
+#define WRITE_LOCK_IDX(idx)		CustomWriteLockGuard writeLockGuard_##idx(_locks[idx], typeid(this).name());
+#define WRITE_LOCK				WRITE_LOCK_IDX(0);
+
+
+
+#define size16(val) static_cast<int16>(sizeof(val))
+#define size32(val) static_cast<int32>(sizeof(val))
+#define len16(arr) static_cast<int16>(sizeof(arr) / sizeof(arr[0]))
+#define len32(arr) static_cast<int32>(sizeof(arr) / sizeof(arr[0]))
 
 #endif // !MACROS_H

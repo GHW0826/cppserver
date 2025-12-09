@@ -3,12 +3,14 @@
 #define TYPES_H
 
 #include "Macros.h"
+
 #include <cstdint>
 
 #if CPP_VERSION >= 11
 #include <mutex>
 #include <thread>
 #include <functional>
+#include <set>
 #include <vector>
 
 using BYTE = std::uint8_t;
@@ -21,8 +23,7 @@ using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
 using uint64 = std::uint64_t;
 
-template<typename T>
-using Vector = std::vector<T>;
+
 template<typename T>
 using Func = std::function<T>;
 template<typename T>
@@ -40,8 +41,22 @@ using LockGuard = std::lock_guard<T>;
 
 template<typename T>
 using SharedPtr = std::shared_ptr<T>;
+template<typename T>
+using WeakedPtr = std::weak_ptr<T>;
+template<typename T>
+using UniquePtr = std::unique_ptr<T>;
 
 USING_SHARED_PTR(IOCPObject);
+USING_SHARED_PTR(IOCPCore);
+USING_SHARED_PTR(Session);
+USING_SHARED_PTR(SendBuffer);
+
+template<typename T>
+using SessionFactory = std::function<SessionRef(T)>;
+template<typename T>
+using EnableSharedFromThis = std::enable_shared_from_this<T>;
+
+using NetCoreRef = IOCPCoreRef;
 
 #else   // C++11 이전 계열
 	#if defined(_WIN32) || defined(_WIN64)

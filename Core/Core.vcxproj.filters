@@ -19,6 +19,27 @@
     <Filter Include="Network">
       <UniqueIdentifier>{9dd9c69c-cfc8-42ab-9c0a-ad127a730d84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network\IOCP">
+      <UniqueIdentifier>{e32cbbdf-b0d5-4963-b396-2c6ee78afb56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Epoll">
+      <UniqueIdentifier>{82f1ebca-0dd5-4245-b63d-762c2267390f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\Buffer">
+      <UniqueIdentifier>{2f321695-e6e7-4aaf-8fdb-e90d80bdbd5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\Allocator">
+      <UniqueIdentifier>{bb809e63-1412-4d5c-9d37-6d597f68842c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lock">
+      <UniqueIdentifier>{87b5c482-31b6-46d3-a23e-3f4e509b27f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\RIO">
+      <UniqueIdentifier>{0b98f5de-a949-4b7e-882b-b6415cd36f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\IOUring">
+      <UniqueIdentifier>{2aa458e8-8ad9-4070-ba83-d17c0b10ef22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Types.h">
@@ -48,19 +69,64 @@
     <ClInclude Include="Network\NetCore.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\IOCPCore.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\IOCPObject.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="Network\NetObject.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\IOCPEvent.h">
+    <ClInclude Include="Network\Session.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\Session.h">
+    <ClInclude Include="Network\IOCP\IOCPCore.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPEvent.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPObject.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Service.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBuffer.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h">
+      <Filter>Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetAddress.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Allocator\STLAllocator.h">
+      <Filter>Memory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Allocator\PoolAllocator.h">
+      <Filter>Memory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Container.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomLock.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\DeadLockProfiler.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Listener.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomReadLockGuard.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomWriteLockGuard.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\RecvBuffer.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollCore.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\SocketUtil.h">
       <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,13 +149,52 @@
     <ClCompile Include="Job\Job.cpp">
       <Filter>Job</Filter>
     </ClCompile>
-    <ClCompile Include="Network\IOCPCore.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\IOCPObject.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
     <ClCompile Include="Network\Session.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPCore.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPObject.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Service.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPEvent.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp">
+      <Filter>Memory\SmartPointer</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\NetAddress.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Allocator\STLAllocator.cpp">
+      <Filter>Memory\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Allocator\PoolAllocator.cpp">
+      <Filter>Memory\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomLock.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\DeadLockProfiler.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Listener.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomReadLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomWriteLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\RecvBuffer.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\SocketUtil.cpp">
       <Filter>Network</Filter>
     </ClCompile>
   </ItemGroup>

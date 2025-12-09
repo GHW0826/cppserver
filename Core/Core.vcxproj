@@ -96,7 +96,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Thread\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Thread\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -168,7 +168,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Thread\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -205,7 +205,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Thread\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -232,15 +232,30 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="CoreTLS.h" />
+    <ClInclude Include="Core\Container.h" />
     <ClInclude Include="Core\Macros.h" />
     <ClInclude Include="Core\Types.h" />
     <ClInclude Include="Job\Job.h" />
-    <ClInclude Include="Network\IOCPCore.h" />
-    <ClInclude Include="Network\IOCPEvent.h" />
-    <ClInclude Include="Network\IOCPObject.h" />
+    <ClInclude Include="Lock\CustomLock.h" />
+    <ClInclude Include="Lock\CustomReadLockGuard.h" />
+    <ClInclude Include="Lock\CustomWriteLockGuard.h" />
+    <ClInclude Include="Lock\DeadLockProfiler.h" />
+    <ClInclude Include="Memory\Allocator\PoolAllocator.h" />
+    <ClInclude Include="Memory\Allocator\STLAllocator.h" />
+    <ClInclude Include="Memory\Buffer\RecvBuffer.h" />
+    <ClInclude Include="Memory\Buffer\SendBuffer.h" />
+    <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h" />
+    <ClInclude Include="Network\Epoll\EpollCore.h" />
+    <ClInclude Include="Network\IOCP\IOCPCore.h" />
+    <ClInclude Include="Network\IOCP\IOCPEvent.h" />
+    <ClInclude Include="Network\IOCP\IOCPObject.h" />
+    <ClInclude Include="Network\Listener.h" />
+    <ClInclude Include="Network\NetAddress.h" />
     <ClInclude Include="Network\NetCore.h" />
     <ClInclude Include="Network\NetObject.h" />
+    <ClInclude Include="Network\Service.h" />
     <ClInclude Include="Network\Session.h" />
+    <ClInclude Include="Network\SocketUtil.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Thread\ThreadManager.h" />
   </ItemGroup>
@@ -249,9 +264,22 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="CoreTLS.cpp" />
     <ClCompile Include="Job\Job.cpp" />
-    <ClCompile Include="Network\IOCPCore.cpp" />
-    <ClCompile Include="Network\IOCPObject.cpp" />
+    <ClCompile Include="Lock\CustomLock.cpp" />
+    <ClCompile Include="Lock\CustomReadLockGuard.cpp" />
+    <ClCompile Include="Lock\CustomWriteLockGuard.cpp" />
+    <ClCompile Include="Lock\DeadLockProfiler.cpp" />
+    <ClCompile Include="Memory\Allocator\PoolAllocator.cpp" />
+    <ClCompile Include="Memory\Allocator\STLAllocator.cpp" />
+    <ClCompile Include="Memory\Buffer\RecvBuffer.cpp" />
+    <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPCore.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPEvent.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPObject.cpp" />
+    <ClCompile Include="Network\Listener.cpp" />
+    <ClCompile Include="Network\NetAddress.cpp" />
+    <ClCompile Include="Network\Service.cpp" />
     <ClCompile Include="Network\Session.cpp" />
+    <ClCompile Include="Network\SocketUtil.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
