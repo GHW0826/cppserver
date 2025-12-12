@@ -13,6 +13,7 @@
 #include "Container.h"
 #include "CoreGlobal.h"
 #include "CoreTLS.h"
+#include "Memory.h"
 #include "CustomLock.h"
 #include "CustomReadLockGuard.h"
 #include "CustomWriteLockGuard.h"

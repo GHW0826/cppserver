@@ -45,4 +45,30 @@ protected:
 	SessionFactory<void> _sessionFactory;
 };
 
-#endif SERVICE_H
+
+////////////////////////////////////////////
+
+class ClientService : public Service
+{
+public:
+	ClientService(NetAddress targetAddress, IOCPCoreRef core, SessionFactory<void> factory, int32 maxSessionCount = 1);
+	virtual ~ClientService() {}
+public:
+	virtual bool Start() override;
+};
+
+////////////////////////////////////////////
+
+class ServerService : public Service
+{
+public:
+	ServerService(NetAddress targetAddress, IOCPCoreRef core, SessionFactory<void> factory, int32 maxSessionCount = 1);
+	virtual ~ServerService() {}
+public:
+	virtual bool Start() override;
+	virtual void CloseService() override;
+private:
+	ListenerRef _listener = nullptr;
+};
+
+#endif // SERVICE_H

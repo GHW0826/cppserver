@@ -1,10 +1,10 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "ThreadManager.h"
+
 #include <iostream>
 
-
-
-int main() {
+int main()
+{
 	std::cout << "Server is running..." << std::endl;
 	// Server logic goes here
 	int8 t = 0;
@@ -12,16 +12,9 @@ int main() {
 	std::cout << CPP_VERSION << " " << __cplusplus << std::endl;
 
 	GThreadManager->Launch([]()
-        {
+		{
 			for (int i = 0; i < 1'000'000; ++i) {
 				std::cout << "i: " << i << std::endl;
 			}
-        });
-
-	//ServerServiceRef service = MakeShared<ServerService>(
-	//	NetAddress(L"127.0.0.1", 7777),
-	//	MakeShared<IOCPCore>(),
-	//	MakeShared<HttpSession>,
-	//	100);
-	return 0;
+		});
 }

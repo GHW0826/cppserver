@@ -11,6 +11,10 @@ class Service;
 
 class Session : public IOCPObject
 {
+	friend class Listener;
+	friend class IOCPCore;
+	friend class Service;
+
 	enum {
 		BUFFER_SIZE = 0x10000 // 64KB
 	};

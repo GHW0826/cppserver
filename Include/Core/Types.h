@@ -12,6 +12,7 @@
 #include <functional>
 #include <set>
 #include <vector>
+#include <atomic>
 
 using BYTE = std::uint8_t;
 using int8 = std::int8_t;
@@ -50,6 +51,9 @@ USING_SHARED_PTR(IOCPObject);
 USING_SHARED_PTR(IOCPCore);
 USING_SHARED_PTR(Session);
 USING_SHARED_PTR(SendBuffer);
+USING_SHARED_PTR(Listener);
+USING_SHARED_PTR(ServerService);
+USING_SHARED_PTR(ClientService);
 
 template<typename T>
 using SessionFactory = std::function<SessionRef(T)>;

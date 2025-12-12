@@ -16,11 +16,11 @@ public:
 CoreGlobal::CoreGlobal()
 {
 	RAW_POINTER_NEW(GThreadManager, ThreadManager);
-	RAW_POINTER_NEW(GDeadLockProfiler, DeadLockProfiler);
+	//RAW_POINTER_NEW(GDeadLockProfiler, DeadLockProfiler);
 }
 
 CoreGlobal::~CoreGlobal()
 {
 	RAW_POINTER_DELETE(GThreadManager);
-	RAW_POINTER_DELETE(GDeadLockProfiler);
+	//RAW_POINTER_DELETE(GDeadLockProfiler);
 }

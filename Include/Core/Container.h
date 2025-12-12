@@ -5,6 +5,7 @@
 #include "Macros.h"
 
 #if CPP_VERSION >= 11
+
 #include "STLAllocator.h"
 
 #include <array>
@@ -24,13 +25,13 @@ using Vector = std::vector<T>;
 template<typename T>
 using List = std::list<T, STLAllocator<T>>;
 
-template<typename Type, typename Container = Deque<Type>>
-using Stack = std::stack<Type, Container>;
 
-template<typename Type, typename Container = Deque<Type>>
-using Queue = std::queue<Type, Container>;
 template<typename Type>
 using Deque = std::deque<Type, STLAllocator<Type>>;
+template<typename Type, typename Container = Deque<Type>>
+using Stack = std::stack<Type, Container>;
+template<typename Type, typename Container = Deque<Type>>
+using Queue = std::queue<Type, Container>;
 
 
 template<typename Key, typename Pred = std::less<Key>>
