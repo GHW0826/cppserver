@@ -92,11 +92,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -109,8 +109,13 @@
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -118,9 +123,8 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     )
 )</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-    </Bscmake>
+    <Bscmake />
+    <Xdcmake />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -130,11 +134,11 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -147,8 +151,13 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -156,9 +165,8 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     )
 )</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-    </Bscmake>
+    <Bscmake />
+    <Xdcmake />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -166,11 +174,11 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -183,8 +191,13 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -192,9 +205,8 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     )
 )</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-    </Bscmake>
+    <Bscmake />
+    <Xdcmake />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -204,11 +216,11 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -221,8 +233,13 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -231,15 +248,21 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
 )</Command>
     </PostBuildEvent>
     <Bscmake />
+    <Xdcmake />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="CoreTLS.h" />
     <ClInclude Include="Core\Container.h" />
+    <ClInclude Include="Core\LockQueue.h" />
     <ClInclude Include="Core\Macros.h" />
+    <ClInclude Include="Core\Structs.h" />
     <ClInclude Include="Core\Types.h" />
+    <ClInclude Include="Job\GlobalQueue.h" />
     <ClInclude Include="Job\Job.h" />
+    <ClInclude Include="Job\JobQueue.h" />
+    <ClInclude Include="Job\JobTimer.h" />
     <ClInclude Include="Lock\CustomLock.h" />
     <ClInclude Include="Lock\CustomReadLockGuard.h" />
     <ClInclude Include="Lock\CustomWriteLockGuard.h" />
@@ -248,8 +271,11 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="Memory\Allocator\STLAllocator.h" />
     <ClInclude Include="Memory\Buffer\RecvBuffer.h" />
     <ClInclude Include="Memory\Buffer\SendBuffer.h" />
+    <ClInclude Include="Memory\Buffer\SendBufferChunk.h" />
+    <ClInclude Include="Memory\Buffer\SendBufferManager.h" />
     <ClInclude Include="Memory\Memory.h" />
     <ClInclude Include="Memory\MemoryPool.h" />
+    <ClInclude Include="Memory\ObjectPool.h" />
     <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h" />
     <ClInclude Include="Network\Epoll\EpollCore.h" />
     <ClInclude Include="Network\IOCP\IOCPCore.h" />
@@ -259,6 +285,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="Network\NetAddress.h" />
     <ClInclude Include="Network\NetCore.h" />
     <ClInclude Include="Network\NetObject.h" />
+    <ClInclude Include="Network\PacketSession.h" />
     <ClInclude Include="Network\Service.h" />
     <ClInclude Include="Network\Session.h" />
     <ClInclude Include="Network\SocketUtil.h" />
@@ -269,7 +296,10 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClCompile Include="CoreGlobal.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="CoreTLS.cpp" />
+    <ClCompile Include="Job\GlobalQueue.cpp" />
     <ClCompile Include="Job\Job.cpp" />
+    <ClCompile Include="Job\JobQueue.cpp" />
+    <ClCompile Include="Job\JobTimer.cpp" />
     <ClCompile Include="Lock\CustomLock.cpp" />
     <ClCompile Include="Lock\CustomReadLockGuard.cpp" />
     <ClCompile Include="Lock\CustomWriteLockGuard.cpp" />
@@ -277,6 +307,9 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClCompile Include="Memory\Allocator\PoolAllocator.cpp" />
     <ClCompile Include="Memory\Allocator\STLAllocator.cpp" />
     <ClCompile Include="Memory\Buffer\RecvBuffer.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBuffer.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBufferChunk.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBufferManager.cpp" />
     <ClCompile Include="Memory\Memory.cpp" />
     <ClCompile Include="Memory\MemoryPool.cpp" />
     <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp" />
@@ -285,6 +318,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClCompile Include="Network\IOCP\IOCPObject.cpp" />
     <ClCompile Include="Network\Listener.cpp" />
     <ClCompile Include="Network\NetAddress.cpp" />
+    <ClCompile Include="Network\PacketSession.cpp" />
     <ClCompile Include="Network\Service.cpp" />
     <ClCompile Include="Network\Session.cpp" />
     <ClCompile Include="Network\SocketUtil.cpp" />
@@ -299,6 +333,9 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Thread\ThreadManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\Protobuf\Protocol.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

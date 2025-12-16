@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "RecvBuffer.h"
 
-
 RecvBuffer::RecvBuffer(int32 bufferSize)
 	: _capacity(bufferSize* BUFFER_COUNT)
 	, _bufferSize(bufferSize)
@@ -20,8 +19,7 @@ void RecvBuffer::Clean()
 		// read, write 커서 동일 둘 다 리셋
 		_readPos = 0;
 		_writePos = 0;
-	}
-	else {
+	} else {
 		// 여유 공간이 버퍼 1개 크기 미만이면, 데이터를 앞으로 땡김
 		if (FreeSize() < _bufferSize) {
 			::memcpy(&_buffer[0], &_buffer[_readPos], dataSize);
@@ -33,17 +31,18 @@ void RecvBuffer::Clean()
 
 bool RecvBuffer::OnRead(int32 numOfBytes)
 {
-	if (numOfBytes > DataSize())
+	if (numOfBytes > DataSize()) {
 		return false;
-
+	}
 	_readPos += numOfBytes;
 	return true;
 }
 
 bool RecvBuffer::OnWrite(int32 numOfBytes)
 {
-	if (numOfBytes > FreeSize())
+	if (numOfBytes > FreeSize()) {
 		return false;
+	}
 
 	_writePos += numOfBytes;
 	return true;

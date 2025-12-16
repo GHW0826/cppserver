@@ -3,16 +3,9 @@
 #define TYPES_H
 
 #include "Macros.h"
-
-#include <cstdint>
-
-#if CPP_VERSION >= 11
 #include <mutex>
 #include <thread>
 #include <functional>
-#include <set>
-#include <vector>
-#include <atomic>
 
 using BYTE = std::uint8_t;
 using int8 = std::int8_t;
@@ -29,6 +22,8 @@ template<typename T>
 using Func = std::function<T>;
 template<typename T>
 using Callback = std::function<T>;
+
+using VoidCallback = std::function<void()>;
 
 using Mutex = std::mutex;
 using Thread = std::thread;
@@ -50,19 +45,25 @@ using UniquePtr = std::unique_ptr<T>;
 USING_SHARED_PTR(IOCPObject);
 USING_SHARED_PTR(IOCPCore);
 USING_SHARED_PTR(Session);
+USING_SHARED_PTR(PacketSession);
+USING_SHARED_PTR(Job);
+USING_SHARED_PTR(JobQueue);
 USING_SHARED_PTR(SendBuffer);
+USING_SHARED_PTR(SendBufferChunk);
 USING_SHARED_PTR(Listener);
 USING_SHARED_PTR(ServerService);
 USING_SHARED_PTR(ClientService);
 
-template<typename T>
-using SessionFactory = std::function<SessionRef(T)>;
+using SessionFactory = std::function<SessionRef(void)>;
+
 template<typename T>
 using EnableSharedFromThis = std::enable_shared_from_this<T>;
 
 using NetCoreRef = IOCPCoreRef;
+using NetCore = IOCPCore;
 
-#else   // C++11 이전 계열
+/*
+#ifdef 0   // C++11 이전 계열
 	#if defined(_WIN32) || defined(_WIN64)
 		typedef unsigned char BYTE;
 		typedef __int8  int8;
@@ -88,7 +89,7 @@ using NetCoreRef = IOCPCoreRef;
 		typedef uint64_t uint64;
 	#endif // !defined(_WIN32) || defined(_WIN64)
 #endif // Types
-
+*/
 
 
 

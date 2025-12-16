@@ -31,7 +31,6 @@ public:
 
 	template<typename U>
 	bool operator==(const STLAllocator<U>&) { return true; }
-
 	template<typename U>
 	bool operator!=(const STLAllocator<U>&) { return false; }
 };

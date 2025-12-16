@@ -1,0 +1,21 @@
+syntax = "proto3";
+package Protocol;
+
+message C_HealthCheck
+{
+}
+
+message S_HealthCheck
+{
+	bool success = 1;
+}
+
+message C_Echo
+{
+  string message = 1;
+}
+
+message S_Echo
+{
+  string message = 1;
+}

@@ -2,9 +2,10 @@
 #include "Service.h"
 #include "Session.h"
 #include "Listener.h"
+#include "IOCPCore.h"
 
 
-Service::Service(ServiceType type, NetAddress address, NetCoreRef core, SessionFactory<void> factory, int32 maxSessionCount)
+Service::Service(ServiceType type, NetAddress address, NetCoreRef core, SessionFactory factory, int32 maxSessionCount)
 	: _type(type), _netAddress(address), _core(core), _sessionFactory(factory), _maxSessionCount(maxSessionCount)
 {
 }
@@ -29,11 +30,11 @@ void Service::Broadcast(SendBufferRef sendBuffer)
 SessionRef Service::CreateSession()
 {
 	SessionRef session = _sessionFactory();
-	//session->SetService(shared_from_this());
+	session->SetService(shared_from_this());
 
-	//if (_core->Register(session) == false)
-	//	return nullptr;
-
+	if (_core->Register(session) == false) {
+		return nullptr;
+	}
 	return session;
 }
 
@@ -55,7 +56,7 @@ void Service::ReleaseSession(SessionRef session)
 
 ////////////////////////////////////////////////////////////////////////
 
-ClientService::ClientService(NetAddress targetAddress, IOCPCoreRef core, SessionFactory<void> factory, int32 maxSessionCount)
+ClientService::ClientService(NetAddress targetAddress, IOCPCoreRef core, SessionFactory factory, int32 maxSessionCount)
 	: Service(ServiceType::Client, targetAddress, core, factory, maxSessionCount)
 {
 }
@@ -75,23 +76,28 @@ bool ClientService::Start()
 	return true;
 }
 
-ServerService::ServerService(NetAddress address, IOCPCoreRef core, SessionFactory<void> factory, int32 maxSessionCount)
+////////////////////////////////////////////////////////////////////////
+
+ServerService::ServerService(NetAddress address, IOCPCoreRef core, SessionFactory factory, int32 maxSessionCount)
 	: Service(ServiceType::Server, address, core, factory, maxSessionCount)
 {
 }
 
 bool ServerService::Start()
 {
-	if (CanStart() == false)
+	if (CanStart() == false) {
 		return false;
+	}
 
 	_listener = MakeShared<Listener>();
-	if (_listener == nullptr)
+	if (_listener == nullptr) {
 		return false;
+	}
 
 	ServerServiceRef service = static_pointer_cast<ServerService>(shared_from_this());
-	if (_listener->StartAccept(service) == false)
+	if (_listener->StartAccept(service) == false) {
 		return false;
+	}
 
 	return true;
 }

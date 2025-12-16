@@ -2,6 +2,9 @@
 #ifndef THREADMANAGER_H
 #define THREADMANAGER_H
 
+#include "Container.h"
+#include "Types.h"
+
 class ThreadManager
 {
 public:

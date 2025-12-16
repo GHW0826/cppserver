@@ -3,7 +3,7 @@
 #define CUSTOMLOCK_H
 
 #include "Types.h"
-#include <atomic>
+#include "Container.h"
 
 class CustomLock
 {
@@ -20,8 +20,8 @@ public:
 	void ReadLock(const char* name);
 	void ReadUnlock(const char* name);
 private:
-	std::atomic<uint32> _lockFlag;
-	uint16 _writeCount = 0;
+	Atomic<uint32> _lockFlag;
+	uint16 _writeCount;
 };
 
 #endif // CUSTOMLOCK_H

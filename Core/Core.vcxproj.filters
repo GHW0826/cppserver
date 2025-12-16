@@ -40,6 +40,12 @@
     <Filter Include="Network\IOUring">
       <UniqueIdentifier>{2aa458e8-8ad9-4070-ba83-d17c0b10ef22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{8cb03f6f-a883-441b-8f44-03ec27f11b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol\Protobuf">
+      <UniqueIdentifier>{be2f7cd3-3d71-4f1e-be7d-9be215ac21ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Types.h">
@@ -135,6 +141,33 @@
     <ClInclude Include="Memory\MemoryPool.h">
       <Filter>Memory</Filter>
     </ClInclude>
+    <ClInclude Include="Network\PacketSession.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structs.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\JobQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\GlobalQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\JobTimer.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\ObjectPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBufferChunk.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBufferManager.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\LockQueue.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Thread\ThreadManager.cpp">
@@ -209,5 +242,31 @@
     <ClCompile Include="Memory\MemoryPool.cpp">
       <Filter>Memory</Filter>
     </ClCompile>
+    <ClCompile Include="Network\PacketSession.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\JobQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\GlobalQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\JobTimer.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBuffer.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBufferChunk.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBufferManager.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\Protobuf\Protocol.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
   </ItemGroup>
 </Project>

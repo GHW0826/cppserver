@@ -21,5 +21,4 @@ private:
 	const char* _name;
 };
 
-
 #endif // CUSTOMREADLOCKGUARD_H

@@ -5,7 +5,7 @@
 void CustomLock::WriteLock(const char* name)
 {
 #if _DEBUG
-	GDeadLockProfiler->PushLock(name);
+//	GDeadLockProfiler->PushLock(name);
 #endif
 
 	// 동일한 스레드가 소유하고 있다면, 무조건 성공
@@ -40,7 +40,7 @@ void CustomLock::WriteLock(const char* name)
 void CustomLock::WriteUnlock(const char* name)
 {
 #if _DEBUG
-	GDeadLockProfiler->PopLock(name);
+//	GDeadLockProfiler->PopLock(name);
 #endif
 	// ReadLock 다 풀기 전에는 WriteUnlock 불가능
 	if ((_lockFlag.load() & READ_COUNT_MASK) != 0)
@@ -54,7 +54,7 @@ void CustomLock::WriteUnlock(const char* name)
 void CustomLock::ReadLock(const char* name)
 {
 #if _DEBUG
-	GDeadLockProfiler->PushLock(name);
+//	GDeadLockProfiler->PushLock(name);
 #endif
 	// 동일한 스레드가 소유시 무조건 성공
 	const uint32 lockThreadId = (_lockFlag.load() & WRITE_THREAD_MASK) >> 16;
@@ -82,7 +82,7 @@ void CustomLock::ReadLock(const char* name)
 void CustomLock::ReadUnlock(const char* name)
 {
 #if _DEBUG
-	GDeadLockProfiler->PopLock(name);
+	//GDeadLockProfiler->PopLock(name);
 #endif
 	if ((_lockFlag.fetch_sub(1) & READ_COUNT_MASK) == 0)
 		CRASH("MULTIPLE_UNLOCK");

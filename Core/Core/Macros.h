@@ -18,9 +18,10 @@
 #endif
 
 
+#define TLS thread_local
+
 // thread_local
 #if CPP_VERSION >= 11
-#define TLS thread_local
 #elif defined(_MSC_VER) // MSVC: __declspec(thread)
 #define TLS __declspec(thread)
 #elif defined(__GNUC__) // GCC/Clang: __thread
@@ -64,15 +65,12 @@
 
 #define USING_SHARED_PTR(name)	using name##Ref = SharedPtr<class name>;
 
-
 #define USE_MANY_LOCK(count)	CustomLock _locks[count];
-#define USE_LOCK				USE_MANY_LOCK(1);
+#define USE_LOCK				USE_MANY_LOCK(1)
 #define READ_LOCK_IDX(idx)		CustomReadLockGuard readLockGuard_##idx(_locks[idx], typeid(this).name());
-#define READ_LOCK				READ_LOCK_IDX(0);
+#define READ_LOCK				READ_LOCK_IDX(0)
 #define WRITE_LOCK_IDX(idx)		CustomWriteLockGuard writeLockGuard_##idx(_locks[idx], typeid(this).name());
-#define WRITE_LOCK				WRITE_LOCK_IDX(0);
-
-
+#define WRITE_LOCK				WRITE_LOCK_IDX(0)
 
 #define size16(val) static_cast<int16>(sizeof(val))
 #define size32(val) static_cast<int32>(sizeof(val))
