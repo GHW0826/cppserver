@@ -26,7 +26,7 @@ int32 PacketSession::OnRecv(BYTE* buffer, int32 len)
 		if (dataSize < header.size)
 			break;
 
-		// 패킷 조립 성공
+		// 패킷 조립 성공시 핸들러 호출
 		OnRecvPacket(&buffer[processLen], header.size);
 
 		processLen += header.size;

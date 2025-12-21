@@ -4,9 +4,11 @@
 #include <thread>
 #include "Types.h"
 #include "Memory.h"
-#include "Session.h"
+#include "PacketSession.h"
+#include "IOCPCore.h"
+#include "ServerPacketHandler.h"
 
-class ServerSession : public Session
+class ServerSession : public PacketSession
 {
 
 };
@@ -15,7 +17,7 @@ int main()
 {
 	std::cout << "Hello Test" << std::endl;
 
-	// ServerPacketHandler::Init();
+	ServerPacketHandler::Init();
 
 	// this_thread::sleep_for(1s);
 

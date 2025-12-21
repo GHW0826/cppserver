@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>fb70df38-0b31-41d6-b6c9-3dafaeabf9c7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PacketGenerator.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MakeListsGenerator.py" />
+    <Compile Include="ServerPacketGenerator.py" />
+    <Compile Include="ClientPacketGenerator.py" />
     <Compile Include="PacketGenerator.py" />
     <Compile Include="ProtoParser.py" />
   </ItemGroup>
@@ -28,6 +32,10 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MakePacketHandler.bat" />
+    <Content Include="Templates\CMakeLists.txt.j2" />
+    <Content Include="Templates\ClientPacketHandler.h" />
+    <Content Include="Templates\ServerPacketHandler.h" />
     <Content Include="Templates\PacketHandler.h" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

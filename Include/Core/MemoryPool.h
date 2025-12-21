@@ -3,6 +3,8 @@
 #define MEMORYPOOL_H
 
 #include "Types.h"
+#if defined(_WIN32) || defined(_WIN64)
+
 #include <windows.h>
 #include <winsock2.h>
 #include <mswsock.h>
@@ -53,5 +55,8 @@ private:
 	Atomic<int32> _useCount = 0;
 	Atomic<int32> _reserveCount = 0;
 };
+
+#endif // win
+
 
 #endif // MEMORYPOOL_H

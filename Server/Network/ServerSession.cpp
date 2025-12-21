@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ServerSession.h"
+#include "ClientPacketHandler.h"
 
 void ServerSession::OnConnected()
 {
@@ -26,7 +27,7 @@ void ServerSession::OnRecvPacket(BYTE* buffer, int32 len)
 	PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 
 	// TODO : packetId 대역 체크
-	// ClientPacketHandler::HandlePacket(session, buffer, len);
+	ClientPacketHandler::HandlePacket(session, buffer, len);
 }
 
 void ServerSession::OnSend(int32 len)

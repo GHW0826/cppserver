@@ -5,7 +5,7 @@
 #include "ServerSession.h"
 #include "Service.h"
 #include "IOCPCore.h"
-
+#include "ClientPacketHandler.h"
 
 enum {
 	WORKER_TICK = 64
@@ -40,6 +40,8 @@ int main() {
 	//			std::cout << "i: " << i << std::endl;
 	//		}
  //       });
+
+	ClientPacketHandler::Init();
 
 	ServerServiceRef service = MakeShared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),

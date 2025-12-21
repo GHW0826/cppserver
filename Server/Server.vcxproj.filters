@@ -10,6 +10,9 @@
     <Filter Include="Network">
       <UniqueIdentifier>{63c9ef1d-132a-43c9-be2b-6aa885e80b07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Protocol\Protobuf">
+      <UniqueIdentifier>{c2018222-3003-4192-ab5a-bddfad1a7082}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -21,6 +24,15 @@
     <ClCompile Include="Network\ServerSession.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="Protocol\ClientPacketHandler.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Protocol\Protobuf\CSEnum.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Protocol\Protobuf\CSProtocol.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -29,5 +41,28 @@
     <ClInclude Include="Network\ServerSession.h">
       <Filter>Network</Filter>
     </ClInclude>
+    <ClInclude Include="Protocol\ClientPacketHandler.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Protocol\Protobuf\CSEnum.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Protocol\Protobuf\CSProtocol.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MakeServerClientProtobuf.bat">
+      <Filter>Protocol</Filter>
+    </None>
+    <None Include="..\Common\Protocol\Protobuf\CSEnum.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="..\Common\Protocol\Protobuf\CSProtocol.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="..\Common\Protocol\Protobuf\CSStruct.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
   </ItemGroup>
 </Project>

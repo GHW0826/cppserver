@@ -1,21 +1,21 @@
 syntax = "proto3";
 package Protocol;
 
-message C_HealthCheck
+message C_HEALTHCHECK
 {
 }
 
-message S_HealthCheck
+message S_HEALTHCHECK
 {
 	bool success = 1;
 }
 
-message C_Echo
+message C_ECHO
 {
   string message = 1;
 }
 
-message S_Echo
+message S_ECHO
 {
   string message = 1;
 }

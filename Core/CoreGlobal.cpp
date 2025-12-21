@@ -7,6 +7,7 @@
 #include "GlobalQueue.h"
 #include "SendBufferManager.h"
 #include "Memory.h"
+#include "CorePacketHandler.h"
 
 ThreadManager* GThreadManager = nullptr;
 DeadLockProfiler* GDeadLockProfiler = nullptr;
@@ -30,6 +31,7 @@ CoreGlobal::CoreGlobal()
 	RAW_POINTER_NEW(GJobTimer, JobTimer);
 	RAW_POINTER_NEW(GGlobalQueue, GlobalQueue);
 	RAW_POINTER_NEW(GSendBufferManager, SendBufferManager);
+	CorePacketHandler::Init();
 	SocketUtil::Init();
 }
 

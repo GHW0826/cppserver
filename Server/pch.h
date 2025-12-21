@@ -5,9 +5,10 @@
 #ifdef _DEBUG
 
 #pragma comment(lib, "Core.lib")
-// #pragma comment(lib, "Protobuf\\Debug\\libprotobufd.lib")
+#pragma comment(lib, "x64\\libprotobufd.lib")
 #else
 #pragma comment(lib, "Release\\Core.lib")
+#pragma comment(lib, "x64\\libprotobuf.lib")
 #endif
 
 #include "CorePch.h"

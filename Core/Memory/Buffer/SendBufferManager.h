@@ -2,9 +2,6 @@
 #ifndef SENDBUFFERMANAGER_H
 #define SENDBUFFERMANAGER_H
 
-#include "Types.h"
-#include "Container.h"
-
 class SendBufferManager
 {
 public:
@@ -16,7 +13,7 @@ private:
 
 	static void			PushGlobal(SendBufferChunk* buffer);
 private:
-	USE_LOCK;
+	USE_LOCK
 	Vector<SendBufferChunkRef> _sendBufferChunks;
 };
 

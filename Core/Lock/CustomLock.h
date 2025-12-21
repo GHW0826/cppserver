@@ -2,9 +2,6 @@
 #ifndef CUSTOMLOCK_H
 #define CUSTOMLOCK_H
 
-#include "Types.h"
-#include "Container.h"
-
 class CustomLock
 {
 	enum :uint32 {

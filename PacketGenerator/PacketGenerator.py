@@ -1,11 +1,13 @@
 import argparse
 import jinja2
 import ProtoParser
+from pathlib import Path
+import shutil
 
 def main():
 	arg_parser = argparse.ArgumentParser(description = 'PacketGenerator')
-	arg_parser.add_argument('--path', type=str, default='C:/Rookiss/CPP_Server/Server/Common/Protobuf/bin/Protocol.proto', help='proto path')
-	arg_parser.add_argument('--output', type=str, default='TestPacketHandler', help='output file')
+	arg_parser.add_argument('--path', type=str, default='D:/git/cppserver/Core/Protocol/Protobuf/Protocol.proto', help='proto path')
+	arg_parser.add_argument('--output', type=str, default='CorePacketHandler', help='output file')
 	arg_parser.add_argument('--recv', type=str, default='C_', help='recv convention')
 	arg_parser.add_argument('--send', type=str, default='S_', help='send convention')
 	args = arg_parser.parse_args()
@@ -22,7 +24,13 @@ def main():
 	f.write(output)
 	f.close()
 
-	print(output)
+
+	# Move To Core Lib Folder
+	src = Path(r".\CorePacketHandler.h")
+	dst_dir = Path(r"D:\git\cppserver\Core\Protocol")
+	dst_dir.mkdir(parents=True, exist_ok=True)
+	shutil.move(str(src), str(dst_dir / src.name))
+	# print(output)
 	return
 
 if __name__ == '__main__':

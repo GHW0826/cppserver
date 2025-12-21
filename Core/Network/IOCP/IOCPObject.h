@@ -2,13 +2,14 @@
 #ifndef IOCPOBJECT_H
 #define IOCPOBJECT_H
 
+#include "Types.h"
+
+#if defined(_WIN32) || defined(_WIN64)
+
 #include <windows.h>
 #include <winsock2.h>
 #include <mswsock.h>
 #include <ws2tcpip.h>
-#include "Types.h"
-
-#if defined(_WIN32) || defined(_WIN64)
 
 class IOCPObject : public EnableSharedFromThis<IOCPObject>
 {

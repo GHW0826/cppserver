@@ -3,10 +3,9 @@
 #define NETADDRESS_H
 
 #include "Types.h"
-#include <windows.h>
-#include <winsock2.h>
-#include <mswsock.h>
-#include <ws2tcpip.h>
+
+#if defined(_WIN32) || defined(_WIN64)
+#endif 
 
 class NetAddress
 {

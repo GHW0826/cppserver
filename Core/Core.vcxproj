@@ -96,7 +96,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -116,6 +116,8 @@ copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -138,7 +140,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -158,6 +160,8 @@ copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -178,7 +182,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -198,6 +202,8 @@ copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -220,7 +226,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -240,6 +246,8 @@ copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
 copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
 
 for %%F in ("$(SolutionDir)Core\*.h") do (
     if /I not "%%~nxF"=="pch.h" (
@@ -290,6 +298,10 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="Network\Session.h" />
     <ClInclude Include="Network\SocketUtil.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Protocol\CorePacketHandler.h" />
+    <ClInclude Include="Protocol\Protobuf\Enum.pb.h" />
+    <ClInclude Include="Protocol\Protobuf\Protocol.pb.h" />
+    <ClInclude Include="Protocol\Protobuf\Struct.pb.h" />
     <ClInclude Include="Thread\ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -332,10 +344,32 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Protocol\CorePacketHandler.cpp" />
+    <ClCompile Include="Protocol\Protobuf\Enum.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Protocol.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Struct.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Thread\ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MakeCoreProtobuf.bat" />
+    <None Include="Protocol\Protobuf\Enum.proto" />
     <None Include="Protocol\Protobuf\Protocol.proto" />
+    <None Include="Protocol\Protobuf\Struct.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
