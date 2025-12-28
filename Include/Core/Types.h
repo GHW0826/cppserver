@@ -6,6 +6,8 @@
 #include <mutex>
 #include <thread>
 #include <functional>
+#include <memory>
+
 
 using BYTE = std::uint8_t;
 using int8 = std::int8_t;
@@ -59,9 +61,19 @@ using SessionFactory = std::function<SessionRef(void)>;
 template<typename T>
 using EnableSharedFromThis = std::enable_shared_from_this<T>;
 
+using NetObjectRef = IOCPObjectRef;
 using NetCoreRef = IOCPCoreRef;
 using NetCore = IOCPCore;
 
+#if defined(_WIN32) || defined(_WIN64)
+
+#else
+
+using SOCKADDR_IN = struct sockaddr_in;
+using SOCKADDR = struct sockaddr;
+using IN_ADDR = struct in_addr;
+
+#endif
 /*
 #ifdef 0   // C++11 이전 계열
 	#if defined(_WIN32) || defined(_WIN64)

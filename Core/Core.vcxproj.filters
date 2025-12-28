@@ -180,6 +180,9 @@
     <ClInclude Include="Protocol\CorePacketHandler.h">
       <Filter>Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollObject.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Thread\ThreadManager.cpp">
@@ -286,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="Protocol\CorePacketHandler.cpp">
       <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollCore.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollObject.cpp">
+      <Filter>Network\Epoll</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

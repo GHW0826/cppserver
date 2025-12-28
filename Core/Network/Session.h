@@ -81,6 +81,7 @@ private:
 };
 #else
 
+// Linux / Unix
 class Service;
 
 class Session 

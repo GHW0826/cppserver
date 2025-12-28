@@ -2,7 +2,7 @@
 #include "Session.h"
 #include "SocketUtil.h"
 #include "Service.h"
-
+#include "SendBuffer.h"
 
 Session::Session()
 	: _recvBuffer(BUFFER_SIZE)
@@ -24,19 +24,19 @@ void Session::Send(SendBufferRef sendBuffer)
 
 	// 1) 버퍼 관련
 	// 2) sendEvent 관리?, 단일, 여러개, WSASend 중첩.
-	//bool registerSend = false;
-	//{
-	//	WRITE_LOCK;
+	bool registerSend = false;
+	{
+		WRITE_LOCK;
 
-	//	_sendQueue.push(sendBuffer);
-	//	if (_sendRegistered.exchange(true) == false)
-	//		registerSend = true;
-	//}
+		_sendQueue.push(sendBuffer);
+		if (_sendRegistered.exchange(true) == false)
+			registerSend = true;
+	}
 
-	//if (registerSend) {
-	//	// cout << "if register Send" << endl;
-	//	RegisterSend();
-	//}
+	if (registerSend) {
+		// cout << "if register Send" << endl;
+		RegisterSend();
+	}
 }
 
 bool Session::Connect()
@@ -165,44 +165,44 @@ void Session::RegisterSend()
 		return;
 	}
 
-	//_sendEvent.Init();
-	//_sendEvent._owner = shared_from_this(); // ADD Ref
+	_sendEvent.Init();
+	_sendEvent._owner = shared_from_this(); // ADD Ref
 
-	//// 보낼 데이터를 sendEvent에 등록
-	//{
-	//	WRITE_LOCK;
-	//	int32 writeSize = 0;
-	//	while (_sendQueue.empty() == false) {
-	//		SendBufferRef sendBuffer = _sendQueue.front();
+	// 보낼 데이터를 sendEvent에 등록
+	{
+		WRITE_LOCK;
+		int32 writeSize = 0;
+		while (_sendQueue.empty() == false) {
+			SendBufferRef sendBuffer = _sendQueue.front();
 
-	//		writeSize += sendBuffer->WriteSize();
-	//		// TODO 예외 체크
+			writeSize += sendBuffer->WriteSize();
+			// TODO 예외 체크
 
-	//		_sendQueue.pop();
-	//		_sendEvent._sendBuffers.push_back(sendBuffer);
-	//	}
-	//}
+			_sendQueue.pop();
+			_sendEvent._sendBuffers.push_back(sendBuffer);
+		}
+	}
 
-	//Vector<WSABUF> wsaBufs;
-	//wsaBufs.reserve(_sendEvent._sendBuffers.size());
-	//for (SendBufferRef sendBuffer : _sendEvent._sendBuffers) {
-	//	WSABUF wsaBuf;
-	//	wsaBuf.buf = reinterpret_cast<char*>(sendBuffer->Buffer());
-	//	wsaBuf.len = static_cast<LONG>(sendBuffer->WriteSize());
-	//	wsaBufs.push_back(wsaBuf);
-	//}
+	Vector<WSABUF> wsaBufs;
+	wsaBufs.reserve(_sendEvent._sendBuffers.size());
+	for (SendBufferRef sendBuffer : _sendEvent._sendBuffers) {
+		WSABUF wsaBuf;
+		wsaBuf.buf = reinterpret_cast<char*>(sendBuffer->Buffer());
+		wsaBuf.len = static_cast<LONG>(sendBuffer->WriteSize());
+		wsaBufs.push_back(wsaBuf);
+	}
 
-	//DWORD numOfBytes = 0;
-	//if (SOCKET_ERROR == ::WSASend(_socket, wsaBufs.data(), static_cast<DWORD>(wsaBufs.size()), OUT & numOfBytes, 0, &_sendEvent, nullptr)) {
-	//	int32 errCode = ::WSAGetLastError();
-	//	if (errCode != WSA_IO_PENDING) {
-	//		cout << errCode << endl;
-	//		HandleError(errCode);
-	//		_sendEvent._owner = nullptr; // release ref
-	//		_sendEvent._sendBuffers.clear(); // release ref
-	//		_sendRegistered.store(false);
-	//	}
-	//}
+	DWORD numOfBytes = 0;
+	if (SOCKET_ERROR == ::WSASend(_socket, wsaBufs.data(), static_cast<DWORD>(wsaBufs.size()), OUT & numOfBytes, 0, &_sendEvent, nullptr)) {
+		int32 errCode = ::WSAGetLastError();
+		if (errCode != WSA_IO_PENDING) {
+			std::cout << errCode << std::endl;
+			HandleError(errCode);
+			_sendEvent._owner = nullptr; // release ref
+			_sendEvent._sendBuffers.clear(); // release ref
+			_sendRegistered.store(false);
+		}
+	}
 }
 
 void Session::ProcessConnect()
@@ -231,32 +231,32 @@ void Session::ProcessDisconnect()
 
 void Session::ProcessRecv(int32 numOfBytes)
 {
-	//_recvEvent._owner = nullptr; // Release Ref
+	_recvEvent._owner = nullptr; // Release Ref
 
-	//if (numOfBytes == 0) {
-	//	Disconnect(L"Recv 0)");
-	//	return;
-	//}
+	if (numOfBytes == 0) {
+		Disconnect(L"Recv 0)");
+		return;
+	}
 
 
-	//if (_recvBuffer.OnWrite(numOfBytes) == false) {
-	//	Disconnect(L"OnWrite Overflow");
-	//	return;
-	//}
+	if (_recvBuffer.OnWrite(numOfBytes) == false) {
+		Disconnect(L"OnWrite Overflow");
+		return;
+	}
 
-	//// 컨텐츠
-	//int32 dataSize = _recvBuffer.DataSize();
-	//int32 processLen = OnRecv(_recvBuffer.ReadPos(), dataSize);
-	//if (processLen < 0 || dataSize < processLen || _recvBuffer.OnRead(processLen) == false) {
-	//	Disconnect(L"OnRead Overflow");
-	//	return;
-	//}
+	// 컨텐츠
+	int32 dataSize = _recvBuffer.DataSize();
+	int32 processLen = OnRecv(_recvBuffer.ReadPos(), dataSize);
+	if (processLen < 0 || dataSize < processLen || _recvBuffer.OnRead(processLen) == false) {
+		Disconnect(L"OnRead Overflow");
+		return;
+	}
 
-	//// 커서 정리
-	//_recvBuffer.Clean();
+	// 커서 정리
+	_recvBuffer.Clean();
 
-	//// 수신 등록
-	//RegisterRecv();
+	// 수신 등록
+	RegisterRecv();
 }
 
 

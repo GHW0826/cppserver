@@ -32,7 +32,7 @@ public:
 	int32 GetMaxSessionCount() { return _maxSessionCount; }
 	ServiceType GetServiceType() { return _type; }
 	NetAddress GetNetAddress() { return _netAddress; }
-	NetCoreRef& GetIocpCore() { return _core; }
+	NetCoreRef& GetNetCore() { return _core; }
 protected:
 	USE_LOCK;
 

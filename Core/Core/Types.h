@@ -61,6 +61,7 @@ using SessionFactory = std::function<SessionRef(void)>;
 template<typename T>
 using EnableSharedFromThis = std::enable_shared_from_this<T>;
 
+using NetObjectRef = IOCPObjectRef;
 using NetCoreRef = IOCPCoreRef;
 using NetCore = IOCPCore;
 

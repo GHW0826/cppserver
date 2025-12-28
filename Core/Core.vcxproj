@@ -286,6 +286,7 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClInclude Include="Memory\ObjectPool.h" />
     <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h" />
     <ClInclude Include="Network\Epoll\EpollCore.h" />
+    <ClInclude Include="Network\Epoll\EpollObject.h" />
     <ClInclude Include="Network\IOCP\IOCPCore.h" />
     <ClInclude Include="Network\IOCP\IOCPEvent.h" />
     <ClInclude Include="Network\IOCP\IOCPObject.h" />
@@ -325,6 +326,8 @@ for %%F in ("$(SolutionDir)Core\*.h") do (
     <ClCompile Include="Memory\Memory.cpp" />
     <ClCompile Include="Memory\MemoryPool.cpp" />
     <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp" />
+    <ClCompile Include="Network\Epoll\EpollCore.cpp" />
+    <ClCompile Include="Network\Epoll\EpollObject.cpp" />
     <ClCompile Include="Network\IOCP\IOCPCore.cpp" />
     <ClCompile Include="Network\IOCP\IOCPEvent.cpp" />
     <ClCompile Include="Network\IOCP\IOCPObject.cpp" />

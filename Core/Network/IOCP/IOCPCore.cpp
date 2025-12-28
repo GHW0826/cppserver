@@ -3,6 +3,8 @@
 #include "IOCPEvent.h"
 #include "IOCPObject.h"
 
+#if defined(_WIN32) || defined(_WIN64)
+
 IOCPCore::IOCPCore()
 {
 	_iocpHandle = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
@@ -46,3 +48,5 @@ bool IOCPCore::Dispatch(uint32 timeoutMs)
 	}
 	return true;
 }
+
+#endif

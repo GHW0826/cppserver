@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "IOCPEvent.h"
 
+#if defined(_WIN32) || defined(_WIN64)
+
 IOCPEvent::IOCPEvent(EventType type)
 	: _eventType(type)
 {
@@ -37,3 +39,5 @@ RecvEvent::RecvEvent()
 SendEvent::SendEvent()
 	: IOCPEvent(EventType::Send)
 {}
+
+#endif

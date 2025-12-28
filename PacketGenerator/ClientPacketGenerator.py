@@ -12,7 +12,7 @@ def main():
 	arg_parser.add_argument('--send', type=str, default='S_', help='send convention')
 	args = arg_parser.parse_args()
 
-	parser = ProtoParser.ProtoParser(10000, args.recv, args.send)
+	parser = ProtoParser.ProtoParser(1000, args.recv, args.send)
 	parser.parse_proto(args.path)
 	file_loader = jinja2.FileSystemLoader('Templates')
 	env = jinja2.Environment(loader=file_loader)

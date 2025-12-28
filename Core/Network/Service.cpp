@@ -6,7 +6,11 @@
 
 
 Service::Service(ServiceType type, NetAddress address, NetCoreRef core, SessionFactory factory, int32 maxSessionCount)
-	: _type(type), _netAddress(address), _core(core), _sessionFactory(factory), _maxSessionCount(maxSessionCount)
+	: _type(type)
+	, _netAddress(address)
+	, _core(core)
+	, _sessionFactory(factory)
+	, _maxSessionCount(maxSessionCount)
 {
 }
 
@@ -18,13 +22,12 @@ void Service::CloseService()
 {
 }
 
-
 void Service::Broadcast(SendBufferRef sendBuffer)
 {
 	WRITE_LOCK;
-	//for (const auto& session : _sessions) {
-	//	session->Send(sendBuffer);
-	//}
+	for (const auto& session : _sessions) {
+		session->Send(sendBuffer);
+	}
 }
 
 SessionRef Service::CreateSession()
