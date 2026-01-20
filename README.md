@@ -4,6 +4,8 @@ Engine, Fix Protocol, Game
 ```
 g++ -std=c++20 -g -O0 -Wall -Wextra -pedantic server.cpp -o server
 g++ -std=c++20 -g -O0 -Wall -Wextra -pedantic client.cpp -o client
+
+g++ -std=c++20 -g -O0 -Wall -Wextra -pedantic server.cpp EpollCore.cpp -o server
 ```
 
 # CMake
