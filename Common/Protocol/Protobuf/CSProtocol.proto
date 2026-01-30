@@ -1,0 +1,30 @@
+syntax = "proto3";
+package Protocol;
+
+message C_TEST
+{
+}
+
+message S_TEST
+{
+	bool success = 1;
+}
+
+message C_CONNECT
+{
+}
+
+message S_CONNECT
+{
+	bool success = 1;
+}
+
+message C_CHAT
+{
+	string msg = 1;
+}
+
+message S_CHAT
+{
+	string msg = 1;
+}
