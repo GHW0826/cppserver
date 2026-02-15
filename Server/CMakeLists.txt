@@ -1,0 +1,159 @@
+cmake_minimum_required(VERSION 3.19)
+project(ServerApp LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
+if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(ARCH_DIR "x64")
+elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
+    set(ARCH_DIR "x86")
+else()
+    set(ARCH_DIR "unknown")
+endif()
+
+
+if (CMAKE_CONFIGURATION_TYPES)
+    set(IS_MULTI_CONFIG TRUE)
+else()
+    set(IS_MULTI_CONFIG FALSE)
+    if (NOT CMAKE_BUILD_TYPE)
+        set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+    endif()
+endif()
+
+set(ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}/..")
+
+set(CORE_LIB_ROOT   "${ROOT_DIR}/Lib/Core")
+set(PROTO_LIB_ROOT  "${ROOT_DIR}/Lib/Protobuf")
+
+set(CORE_LIB_NAME "libCore.a")
+set(PROTO_LIB_NAME_RELEASE "libprotobuf.a")
+set(PROTO_LIB_NAME_DEBUG   "libprotobufd.a")
+
+set(CORE_INCLUDE_DIR     "${ROOT_DIR}/Include/Core")
+set(PROTOBUF_INCLUDE_DIR "${ROOT_DIR}/Include/Protobuf")
+
+function(set_imported_static_locations target lib_root lib_name_debug lib_name_release)
+    if (IS_MULTI_CONFIG)
+        # Debug
+        set(_dbg_dir "${lib_root}/Debug/${ARCH_DIR}")
+        if (EXISTS "${_dbg_dir}/${lib_name_debug}")
+            set_target_properties(${target} PROPERTIES
+                IMPORTED_LOCATION_DEBUG "${_dbg_dir}/${lib_name_debug}"
+            )
+        else()
+            set_target_properties(${target} PROPERTIES
+                IMPORTED_LOCATION_DEBUG "${_dbg_dir}/${lib_name_release}"
+            )
+        endif()
+
+        set_target_properties(${target} PROPERTIES
+            IMPORTED_LOCATION_RELEASE        "${lib_root}/Release/${ARCH_DIR}/${lib_name_release}"
+            IMPORTED_LOCATION_RELWITHDEBINFO "${lib_root}/RelWithDebInfo/${ARCH_DIR}/${lib_name_release}"
+            IMPORTED_LOCATION_MINSIZEREL     "${lib_root}/MinSizeRel/${ARCH_DIR}/${lib_name_release}"
+            MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
+            MAP_IMPORTED_CONFIG_MINSIZEREL     Release
+        )
+    else()
+        set(_cfg "${CMAKE_BUILD_TYPE}")
+        set(_dir "${lib_root}/${_cfg}/${ARCH_DIR}")
+
+        if (_cfg STREQUAL "Debug")
+            if (EXISTS "${_dir}/${lib_name_debug}")
+                set_target_properties(${target} PROPERTIES IMPORTED_LOCATION "${_dir}/${lib_name_debug}")
+            else()
+                set_target_properties(${target} PROPERTIES IMPORTED_LOCATION "${_dir}/${lib_name_release}")
+            endif()
+        else()
+            set_target_properties(${target} PROPERTIES IMPORTED_LOCATION "${_dir}/${lib_name_release}")
+        endif()
+    endif()
+endfunction()
+
+
+add_library(Protobuf::libprotobuf STATIC IMPORTED GLOBAL)
+
+set_imported_static_locations(
+    Protobuf::libprotobuf
+    "${PROTO_LIB_ROOT}"
+    "${PROTO_LIB_NAME_DEBUG}"
+    "${PROTO_LIB_NAME_RELEASE}"
+)
+
+set_target_properties(Protobuf::libprotobuf PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${PROTOBUF_INCLUDE_DIR}"
+)
+
+add_library(Core::Core STATIC IMPORTED GLOBAL)
+
+set_imported_static_locations(
+    Core::Core
+    "${CORE_LIB_ROOT}"
+    "${CORE_LIB_NAME}"
+    "${CORE_LIB_NAME}"
+)
+
+set_target_properties(Core::Core PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${CORE_INCLUDE_DIR}"
+)
+
+target_link_libraries(Core::Core INTERFACE Protobuf::libprotobuf)
+
+if (UNIX AND NOT APPLE)
+    find_package(Threads REQUIRED)
+    target_link_libraries(Core::Core INTERFACE Threads::Threads dl)
+
+    find_package(ZLIB)
+    if (ZLIB_FOUND)
+        target_link_libraries(Core::Core INTERFACE ZLIB::ZLIB)
+    else()
+        # target_link_libraries(Core::Core INTERFACE z)
+    endif()
+endif()
+
+
+add_executable(ServerApp
+    "${CMAKE_CURRENT_SOURCE_DIR}/Main.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Network/ServerSession.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Protocol/ClientPacketHandler.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/pch.cpp"
+    
+
+    "${ROOT_DIR}/Common/Protocol/Protobuf/CSEnum.pb.cc"
+    "${ROOT_DIR}/Common/Protocol/Protobuf/CSProtocol.pb.cc"
+    "${ROOT_DIR}/Common/Protocol/Protobuf/CSStruct.pb.cc"
+    
+)
+
+target_include_directories(ServerApp PRIVATE
+    "${PROTOBUF_INCLUDE_DIR}"
+    "${CMAKE_CURRENT_SOURCE_DIR}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Network"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Protocol"
+    
+    "${ROOT_DIR}/Common/Protocol/Protobuf"
+    
+)
+
+target_precompile_headers(ServerApp PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/pch.h>"
+)
+
+target_link_libraries(ServerApp PRIVATE Core::Core)
+
+set(OUT_BASE "${CMAKE_BINARY_DIR}/out/bin")
+
+if (IS_MULTI_CONFIG)
+    set_target_properties(ServerApp PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${OUT_BASE}/Debug/${ARCH_DIR}"
+        RUNTIME_OUTPUT_DIRECTORY_RELEASE        "${OUT_BASE}/Release/${ARCH_DIR}"
+        RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${OUT_BASE}/RelWithDebInfo/${ARCH_DIR}"
+        RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL     "${OUT_BASE}/MinSizeRel/${ARCH_DIR}"
+    )
+else()
+    set_target_properties(ServerApp PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${OUT_BASE}/${CMAKE_BUILD_TYPE}/${ARCH_DIR}"
+    )
+endif()

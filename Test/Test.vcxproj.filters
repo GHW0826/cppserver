@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{9c2db436-f814-4cc5-88b2-95a8b1bdbd06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{7f3fbef9-a685-4eca-ad6e-9af5d34c8d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol\Protobuf">
+      <UniqueIdentifier>{b643622c-05b4-440b-93ca-24af39bca77a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Protocol\Protobuf\CSEnum.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Protocol\Protobuf\CSProtocol.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\ServerPacketHandler.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Protocol\Protobuf\CSEnum.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Protocol\Protobuf\CSProtocol.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ServerPacketHandler.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common\Protocol\Protobuf\CSEnum.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="..\Common\Protocol\Protobuf\CSProtocol.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="..\Common\Protocol\Protobuf\CSStruct.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+  </ItemGroup>
+</Project>

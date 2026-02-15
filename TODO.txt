@@ -1,0 +1,5 @@
+Linux Python 설치 테스트
+Linux protobuf bin 설치 테스트
+Linux 자동화 스크립트 
+
+git clone 테스트

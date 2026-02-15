@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4e6f061f-9e42-4cb0-814a-8bda4dc1bfff}</ProjectGuid>
+    <RootNamespace>Core</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Mid\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Mid\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Mid\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Mid\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Core.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\Epoll\*.h" "$(SolutionDir)Include\Core\*.h"
+
+for %%F in ("$(SolutionDir)Core\*.h") do (
+    if /I not "%%~nxF"=="pch.h" (
+        copy /Y "%%F" "$(SolutionDir)Include\Core"
+    )
+)</Command>
+    </PostBuildEvent>
+    <Bscmake />
+    <Xdcmake />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Core.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\Epoll\*.h" "$(SolutionDir)Include\Core\*.h"
+
+for %%F in ("$(SolutionDir)Core\*.h") do (
+    if /I not "%%~nxF"=="pch.h" (
+        copy /Y "%%F" "$(SolutionDir)Include\Core"
+    )
+)</Command>
+    </PostBuildEvent>
+    <Bscmake />
+    <Xdcmake />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Core.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\Epoll\*.h" "$(SolutionDir)Include\Core\*.h"
+
+for %%F in ("$(SolutionDir)Core\*.h") do (
+    if /I not "%%~nxF"=="pch.h" (
+        copy /Y "%%F" "$(SolutionDir)Include\Core"
+    )
+)</Command>
+    </PostBuildEvent>
+    <Bscmake />
+    <Xdcmake />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\Core\;$(SolutionDir)Core\Network\;$(SolutionDir)Core\Thread\;$(SolutionDir)Core\Lock\;$(SolutionDir)Core\Memory\;$(SolutionDir)Core\Job\;$(SolutionDir)Core\Network\IOCP\;$(SolutionDir)Core\Memory\Allocator\;$(SolutionDir)Core\Memory\Buffer\;$(SolutionDir)Include\Protobuf\;$(SolutionDir)Core\Protocol\Protobuf\;$(SolutionDir)Core\Protocol\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)Lib\Core\$(Configuration)\$(Platform)\Core.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Core\Core\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Lock\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Thread\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Job\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Buffer\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Memory\Allocator\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\IOCP\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\Protobuf\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Protocol\*.h" "$(SolutionDir)Include\Core\*.h"
+copy "$(SolutionDir)Core\Network\Epoll\*.h" "$(SolutionDir)Include\Core\*.h"
+
+for %%F in ("$(SolutionDir)Core\*.h") do (
+    if /I not "%%~nxF"=="pch.h" (
+        copy /Y "%%F" "$(SolutionDir)Include\Core"
+    )
+)</Command>
+    </PostBuildEvent>
+    <Bscmake />
+    <Xdcmake />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CoreGlobal.h" />
+    <ClInclude Include="CorePch.h" />
+    <ClInclude Include="CoreTLS.h" />
+    <ClInclude Include="Core\Container.h" />
+    <ClInclude Include="Core\LockQueue.h" />
+    <ClInclude Include="Core\Macros.h" />
+    <ClInclude Include="Core\Structs.h" />
+    <ClInclude Include="Core\Types.h" />
+    <ClInclude Include="Job\GlobalQueue.h" />
+    <ClInclude Include="Job\Job.h" />
+    <ClInclude Include="Job\JobQueue.h" />
+    <ClInclude Include="Job\JobTimer.h" />
+    <ClInclude Include="Lock\CustomLock.h" />
+    <ClInclude Include="Lock\CustomReadLockGuard.h" />
+    <ClInclude Include="Lock\CustomWriteLockGuard.h" />
+    <ClInclude Include="Lock\DeadLockProfiler.h" />
+    <ClInclude Include="Memory\Allocator\PoolAllocator.h" />
+    <ClInclude Include="Memory\Allocator\STLAllocator.h" />
+    <ClInclude Include="Memory\Buffer\RecvBuffer.h" />
+    <ClInclude Include="Memory\Buffer\SendBuffer.h" />
+    <ClInclude Include="Memory\Buffer\SendBufferChunk.h" />
+    <ClInclude Include="Memory\Buffer\SendBufferManager.h" />
+    <ClInclude Include="Memory\Memory.h" />
+    <ClInclude Include="Memory\MemoryPool.h" />
+    <ClInclude Include="Memory\ObjectPool.h" />
+    <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h" />
+    <ClInclude Include="Network\Epoll\EpollCore.h" />
+    <ClInclude Include="Network\Epoll\EpollEvent.h" />
+    <ClInclude Include="Network\Epoll\EpollListener.h" />
+    <ClInclude Include="Network\Epoll\EpollObject.h" />
+    <ClInclude Include="Network\Epoll\EpollSession.h" />
+    <ClInclude Include="Network\IOCP\IOCPCore.h" />
+    <ClInclude Include="Network\IOCP\IOCPEvent.h" />
+    <ClInclude Include="Network\IOCP\IOCPListener.h" />
+    <ClInclude Include="Network\IOCP\IOCPObject.h" />
+    <ClInclude Include="Network\IOCP\IOCPSession.h" />
+    <ClInclude Include="Network\NetAddress.h" />
+    <ClInclude Include="Network\NetCore.h" />
+    <ClInclude Include="Network\NetObject.h" />
+    <ClInclude Include="Network\PacketSession.h" />
+    <ClInclude Include="Network\Service.h" />
+    <ClInclude Include="Network\SocketUtil.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Protocol\CorePacketHandler.h" />
+    <ClInclude Include="Protocol\Protobuf\Enum.pb.h" />
+    <ClInclude Include="Protocol\Protobuf\Protocol.pb.h" />
+    <ClInclude Include="Protocol\Protobuf\Struct.pb.h" />
+    <ClInclude Include="Thread\ThreadManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CoreGlobal.cpp" />
+    <ClCompile Include="CorePch.cpp" />
+    <ClCompile Include="CoreTLS.cpp" />
+    <ClCompile Include="Job\GlobalQueue.cpp" />
+    <ClCompile Include="Job\Job.cpp" />
+    <ClCompile Include="Job\JobQueue.cpp" />
+    <ClCompile Include="Job\JobTimer.cpp" />
+    <ClCompile Include="Lock\CustomLock.cpp" />
+    <ClCompile Include="Lock\CustomReadLockGuard.cpp" />
+    <ClCompile Include="Lock\CustomWriteLockGuard.cpp" />
+    <ClCompile Include="Lock\DeadLockProfiler.cpp" />
+    <ClCompile Include="Memory\Allocator\PoolAllocator.cpp" />
+    <ClCompile Include="Memory\Allocator\STLAllocator.cpp" />
+    <ClCompile Include="Memory\Buffer\RecvBuffer.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBuffer.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBufferChunk.cpp" />
+    <ClCompile Include="Memory\Buffer\SendBufferManager.cpp" />
+    <ClCompile Include="Memory\Memory.cpp" />
+    <ClCompile Include="Memory\MemoryPool.cpp" />
+    <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp" />
+    <ClCompile Include="Network\Epoll\EpollCore.cpp" />
+    <ClCompile Include="Network\Epoll\EpollEvent.cpp" />
+    <ClCompile Include="Network\Epoll\EpollListener.cpp" />
+    <ClCompile Include="Network\Epoll\EpollObject.cpp" />
+    <ClCompile Include="Network\Epoll\EpollSession.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPCore.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPEvent.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPListener.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPObject.cpp" />
+    <ClCompile Include="Network\IOCP\IOCPSession.cpp" />
+    <ClCompile Include="Network\NetAddress.cpp" />
+    <ClCompile Include="Network\PacketSession.cpp" />
+    <ClCompile Include="Network\Service.cpp" />
+    <ClCompile Include="Network\SocketUtil.cpp" />
+    <ClCompile Include="Network\SocketUtil_posix.cpp" />
+    <ClCompile Include="Network\SocketUtil_win.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Protocol\CorePacketHandler.cpp" />
+    <ClCompile Include="Protocol\Protobuf\Enum.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Protocol.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Struct.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Thread\ThreadManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MakeCoreProtobuf.bat" />
+    <None Include="Protocol\Protobuf\Enum.proto" />
+    <None Include="Protocol\Protobuf\Protocol.proto" />
+    <None Include="Protocol\Protobuf\Struct.proto" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

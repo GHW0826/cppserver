@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.19)
+project(Core LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(ARCH_DIR "x64")
+elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
+    set(ARCH_DIR "x86")
+else()
+    set(ARCH_DIR "unknown")
+endif()
+
+
+if (NOT CMAKE_CONFIGURATION_TYPES)
+    if (NOT CMAKE_BUILD_TYPE)
+        set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+    endif()
+    set(PROTO_CONFIG_DIR "${CMAKE_BUILD_TYPE}")
+else()
+    set(PROTO_CONFIG_DIR "$<CONFIG>")
+endif()
+
+set(ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
+
+set(CORE_SOURCES
+{% for src_file in source_files -%}
+    "{{ src_file }}"
+{% endfor %}
+)
+
+
+add_library(Core STATIC ${CORE_SOURCES})
+
+
+
+set(PROTOBUF_INCLUDE_DIR "${ROOT_DIR}/Include/Protobuf")
+set(PROTOBUF_LIB_DIR "${ROOT_DIR}/Lib/Protobuf/${PROTO_CONFIG_DIR}/${ARCH_DIR}")
+set(PROTOBUF_LIB_PATH "${PROTOBUF_LIB_DIR}/libprotobuf.a")
+if (EXISTS "${PROTOBUF_LIB_DIR}/libprotobufd.a")
+    set(PROTOBUF_LIB_PATH "${PROTOBUF_LIB_DIR}/libprotobufd.a")
+endif()
+
+add_library(Protobuf::libprotobuf STATIC IMPORTED GLOBAL)
+set_target_properties(Protobuf::libprotobuf PROPERTIES
+    IMPORTED_LOCATION "${PROTOBUF_LIB_PATH}"
+    INTERFACE_INCLUDE_DIRECTORIES "${PROTOBUF_INCLUDE_DIR}"
+)
+target_link_libraries(Core PUBLIC Protobuf::libprotobuf)
+
+
+
+if (UNIX AND NOT APPLE)
+    find_package(Threads REQUIRED)
+    target_link_libraries(Core PUBLIC Threads::Threads dl)
+endif()
+
+
+# header include path
+target_include_directories(Core PUBLIC
+"${CMAKE_CURRENT_SOURCE_DIR}/Include/Protobuf"
+{% for inc_dir in include_dirs -%}
+    "{{ inc_dir }}"
+{% endfor %}
+)
+
+target_precompile_headers(Core PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:pch.h>"
+)
+
+set_target_properties(Core PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../../Lib/Core/${CMAKE_BUILD_TYPE}/${ARCH_DIR}"
+)
+
+
+set(CORE_HEADERS_DST_ROOT "${ROOT_DIR}/Include/Core")
+
+set(CORE_HEADERS_TO_COPY
+{% for src_file, _ in hpp_source_files -%}
+    "${CMAKE_CURRENT_SOURCE_DIR}{{ src_file }}"
+{% endfor %}
+)
+
+add_custom_command(TARGET Core POST_BUILD
+    COMMAND "${CMAKE_COMMAND}" -E make_directory "${CORE_HEADERS_DST_ROOT}"
+    COMMAND "${CMAKE_COMMAND}" -E echo "Copy selected core headers -> ${CORE_HEADERS_DST_ROOT}"
+    {% for src_file, file_name in hpp_source_files -%}
+    COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+                    "${CMAKE_CURRENT_SOURCE_DIR}{{ src_file }}"
+                    "${CORE_HEADERS_DST_ROOT}/{{ file_name }}"
+    {% endfor %}
+    COMMENT "Copy headers -> ${CORE_HEADERS_DST_ROOT}"
+    VERBATIM
+)
+

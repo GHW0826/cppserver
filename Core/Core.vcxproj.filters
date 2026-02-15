@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{6302835a-1154-433d-b9fb-fa9496713625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{ff215050-5dd5-49d4-a9c5-2e5663b0b28d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{a019541e-bec2-402b-8ba1-febd78de5e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Job">
+      <UniqueIdentifier>{94879191-6b14-43e9-b6de-f10190a4ed99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\SmartPointer">
+      <UniqueIdentifier>{1cec537a-151e-4828-96c8-10f4fdb3016e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{9dd9c69c-cfc8-42ab-9c0a-ad127a730d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\IOCP">
+      <UniqueIdentifier>{e32cbbdf-b0d5-4963-b396-2c6ee78afb56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Epoll">
+      <UniqueIdentifier>{82f1ebca-0dd5-4245-b63d-762c2267390f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\Buffer">
+      <UniqueIdentifier>{2f321695-e6e7-4aaf-8fdb-e90d80bdbd5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\Allocator">
+      <UniqueIdentifier>{bb809e63-1412-4d5c-9d37-6d597f68842c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lock">
+      <UniqueIdentifier>{87b5c482-31b6-46d3-a23e-3f4e509b27f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\RIO">
+      <UniqueIdentifier>{0b98f5de-a949-4b7e-882b-b6415cd36f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{8cb03f6f-a883-441b-8f44-03ec27f11b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol\Protobuf">
+      <UniqueIdentifier>{be2f7cd3-3d71-4f1e-be7d-9be215ac21ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\io_uring">
+      <UniqueIdentifier>{2aa458e8-8ad9-4070-ba83-d17c0b10ef22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Types.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Macros.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\ThreadManager.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CorePch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreTLS.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\Job.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetCore.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetObject.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPCore.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPEvent.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPObject.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Service.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBuffer.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\CustomEnableSharedFromThis.h">
+      <Filter>Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetAddress.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Allocator\STLAllocator.h">
+      <Filter>Memory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Allocator\PoolAllocator.h">
+      <Filter>Memory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Container.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomLock.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\DeadLockProfiler.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomReadLockGuard.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock\CustomWriteLockGuard.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\RecvBuffer.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollCore.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\SocketUtil.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Memory.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\MemoryPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\PacketSession.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structs.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\JobQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\GlobalQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job\JobTimer.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\ObjectPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBufferChunk.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Buffer\SendBufferManager.h">
+      <Filter>Memory\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\LockQueue.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Protobuf\Enum.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Protobuf\Protocol.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Protobuf\Struct.pb.h">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\CorePacketHandler.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollObject.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollListener.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPListener.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\IOCP\IOCPSession.h">
+      <Filter>Network\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollSession.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Epoll\EpollEvent.h">
+      <Filter>Network\Epoll</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Thread\ThreadManager.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreTLS.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CorePch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\Job.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPCore.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPObject.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Service.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPEvent.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\SmartPointer\CustomEnableSharedFromThis.cpp">
+      <Filter>Memory\SmartPointer</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\NetAddress.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Allocator\STLAllocator.cpp">
+      <Filter>Memory\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Allocator\PoolAllocator.cpp">
+      <Filter>Memory\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomLock.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\DeadLockProfiler.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomReadLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock\CustomWriteLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\RecvBuffer.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\SocketUtil.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Memory.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\MemoryPool.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\PacketSession.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\JobQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\GlobalQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Job\JobTimer.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBuffer.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBufferChunk.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Buffer\SendBufferManager.cpp">
+      <Filter>Memory\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Enum.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Protocol.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\Protobuf\Struct.pb.cc">
+      <Filter>Protocol\Protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\CorePacketHandler.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollCore.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollObject.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollListener.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPListener.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\IOCP\IOCPSession.cpp">
+      <Filter>Network\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollSession.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Epoll\EpollEvent.cpp">
+      <Filter>Network\Epoll</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\SocketUtil_win.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\SocketUtil_posix.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\Protobuf\Protocol.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="MakeCoreProtobuf.bat">
+      <Filter>Protocol</Filter>
+    </None>
+    <None Include="Protocol\Protobuf\Enum.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+    <None Include="Protocol\Protobuf\Struct.proto">
+      <Filter>Protocol\Protobuf</Filter>
+    </None>
+  </ItemGroup>
+</Project>
